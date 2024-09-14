@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f0e13;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+    
+}
+
+.summary-section {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 30px 20px; /* 上下各有 20px 的内边距 */
+}
+
+.summary-item {
+    float: left;
+    text-align: center;
+    justify-content: center;
+}
+
+.summary-title {
+    font-size: 16px;
+    color: #999999;
+}
+
+.summary-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #21ce99;
+}
+
+.graph-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.graph-item {
+    width: 48%;
+    height: 150px;
+    background-color: #1e1f25;
+    border-radius: 8px;
+}
+
+.market-statistics {
+    background-color: #1e1f25;
+    padding: 20px;
+    border-radius: 8px;
+    height: 100%;
+}
+
+.market-statistics,
+.chart-section {
+    flex: 1;
+    margin: 10px;
+}
+
+.market-statistics h3 {
+    margin-bottom: 15px;
+}
+
+/* 设置 stats-grid 使其内容垂直排列 */
+.stats-grid {
+    display: flex;
+    flex-direction: column; /* 使子元素垂直排列 */
+    gap: 20px; /* 每个 stat-item 之间的间距 */
+}
+
+.stat-item {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.market-rates {
+    background-color: #1e1f25;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.market-rates h3 {
+    margin-bottom: 15px;
+}
+
+.rate-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rate-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 10px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.purple {
+    background-color: #7b61ff;
+    width: 60%;
+}
+
+.green {
+    background-color: #21ce99;
+    width: 45%;
+}
+
+.rate-model {
+    background-color: #1e1f25;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.rate-model-details {
+    margin-top: 15px;
+}
+
+
+/* 设置导航栏宽度和高度 */
+.fixed-buttons {
+    display: flex;
+    justify-content: flex-end;
+    /* 将内容靠右显示 */
+    align-items: center;
+    /* 垂直居中 */
+    width: 100%;
+    /* 让 div 充满整个页面宽度 */
+    height: 60px;
+    /* 设置高度，类似于导航栏 */
+    background-color: #1e252d;
+    /* 背景色可以自定义 */
+    padding: 0 20px;
+    /* 在左右留出内边距 */
+}
+
+/* h2 标题和按钮容器居右 */
+.fixed-buttons h2 {
+    margin-right: auto;
+    /* 将标题放在左侧 */
+    font-size: 24px;
+    /* 设置标题字体大小 */
+    color: #91989c;
+    /* 设置标题颜色 */
+}
+
+/* 按钮容器中的按钮居中并且靠右对齐 */
+.button-container {
+    display: flex;
+    gap: 10px;
+    /* 按钮之间的间距 */
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 10px 20px;
+    /* 按钮内边距 */
+    font-size: 16px;
+    /* 按钮字体大小 */
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.btn-store {
+    background-color: #28a745;
+    /* Store 按钮背景色 */
+    color: white;
+}
+
+.btn-borrow {
+    background-color: #007bff;
+    /* Borrow 按钮背景色 */
+    color: white;
+}
+
+/* 设置按钮的 hover 效果 */
+.btn-store:hover,
+.btn-borrow:hover {
+    opacity: 0.8;
+}
+
+.chart-section {
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-container {
+    width: 100%;
+    height: 100%;  /* 固定高度 */
+    position: relative;
+    background-color: #1e1f25;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #1e1f25;
+    border-radius: 8px;
+}
+
+.ring-stats{
+    display: flex;
+    border-radius: 25px;
+    justify-content: space-between; /* 在两边之间留出空隙 */
+    align-items: flex-start; /* 对齐顶部 */
+    margin: none; /* 在整体布局中增加一些垂直间距 */    
+    background-color: #1e1f25;
+    font-size: 30px;
+    font-weight: bold;
+}

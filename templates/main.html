@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT Market Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <!--在这里添加代码-->
+        <div class="row fixed-buttons navbar" style="border-radius: 20px;">
+            <h2>Hi, {{username}}!</h2>
+            <div class="button-container">
+                <button class="btn btn-store" onclick="window.location.href='/deposit'">Deposit</button>
+                <button class="btn btn-borrow" onclick="window.location.href='/borrow'">Borrow</button>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <section class="summary-section">
+            <div class="summary-item">
+                <h2 class="summary-title"> Total Balance </h2>
+                <p class="summary-value" id="totalAll"></p>
+            </div>
+            <div class="summary-item">
+                <h2 class="summary-title"> Total Borrowing </h2>
+                <p class="summary-value" id="totalBorrowing"></p>
+            </div>
+        </section>
+
+        <div class="ring-stats">
+            <!-- Market Statistics Section -->
+            <section class="market-statistics">
+                <h3>Market Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <p>Total Balance</p>
+                        <p id="totalBalance" style="color: #21ce99;"></p>
+                    </div>
+                    <div class="stat-item">
+                        <p>Available Liquidity</p>
+                        <p id="totalDeposit" style="color: #21ce99;"></p>
+                    </div>
+                    <div class="stat-item">
+                        <p>Lend</p>
+                        <p id="totalLend" style="color: #21ce99;"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ring Chart Section -->
+            <section class="chart-section">
+                <div class="chart-container">
+                    <canvas id="myChart" width="200" height="200"></canvas>
+                </div>
+            </section>
+        </div>
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="{{ url_for('static', filename='contract.js') }}"></script>
+    <script>
+
+        window.onload = async function () {
+            const total1 = await getLendValue();
+            const total2 = await getAvailValue();
+
+            const t3 = await getBorrowedValue();
+            document.getElementById('totalBorrowing').innerText = parseInt(total1);
+            document.getElementById('totalDeposit').innerText = parseInt(total2);
+            document.getElementById('totalLend').innerText = parseInt(total1);
+
+            const sum = parseInt(total1) + parseInt(total2);
+            document.getElementById('totalBalance').innerText = sum;
+            document.getElementById('totalAll').innerText = sum;
+
+            // Create the ring chart
+            const ctx = document.getElementById('myChart').getContext('2d');
+
+            const myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Borrowed', 'Available Liquidity'],
+                    datasets: [{
+                        data: [parseInt(total1), parseInt(total2)],
+                        backgroundColor: ['#A020F0', '#21ce99'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,  // 禁止保持宽高比
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+
+        };
+
+    </script>
+</body>
+
+</html>
